@@ -76,7 +76,7 @@ This sample uses bash scripts to deploy Edge Data Store to a remote Linux edge d
    docker push <acrLoginServer>/edgedatastore:v1
    ```
 
-1. Configure specified IotEdgeConfigPath file ([iotedge-config.json](iotedge-config.json) by default) with required Azure IoT Edge Device Module information, specifically the required Azure Container Registry details, see [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Configuration/EdgeSystemConfiguration_1-0.html)
+1. Configure specified IotEdgeConfigPath file ([iotedge-config.json](iotedge-config.json) by default) with required Azure IoT Edge Device Module information, specifically the required Azure Container Registry details.
    1. {azureContainerRegistryName} should be the name of the Azure Container Registry
    1. {azureContainerRegistryAddress} should be the 'Login server'
    1. {azureContainerRegistryPassword} should be the 'password' from 'Access Keys'
