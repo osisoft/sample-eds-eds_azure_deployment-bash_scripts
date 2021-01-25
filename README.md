@@ -69,14 +69,14 @@ This sample uses bash scripts to deploy Edge Data Store to a remote Linux edge d
 
 1. Create an Azure IoT Hub with IoT Edge enabled, see [Microsoft Docs](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal)
 1. Create an Azure Container Registry with Admin user enabled, see [Microsoft Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)
-1. Build Edge Data Store container matching the edge device processor architecture (ARM32, ARM64, or AMD64), see [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Docker/EdgeDocker.html)
+1. Build Edge Data Store container matching the edge device processor architecture (ARM32, ARM64, or AMD64), see [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Docker/EdgeDocker_1-0.html?q=edge%20docker)
 1. Push container image to Azure Container Registry, see [Microsoft Docs](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal#push-image-to-registry)
 
    ```bash
    docker push <acrLoginServer>/edgedatastore:v1
    ```
 
-1. Configure specified IotEdgeConfigPath file ([iotedge-config.json](iotedge-config.json) by default) with required Azure IoT Edge Device Module information, specifically the required Azure Container Registry details, see [Microsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Configuration/EdgeSystemConfiguration.html)
+1. Configure specified IotEdgeConfigPath file ([iotedge-config.json](iotedge-config.json) by default) with required Azure IoT Edge Device Module information, specifically the required Azure Container Registry details.
    1. {azureContainerRegistryName} should be the name of the Azure Container Registry
    1. {azureContainerRegistryAddress} should be the 'Login server'
    1. {azureContainerRegistryPassword} should be the 'password' from 'Access Keys'
@@ -93,10 +93,10 @@ This sample uses bash scripts to deploy Edge Data Store to a remote Linux edge d
    ssh remote_username@device_ip_address
    ```
 
-1. Configure [config.ini](config.ini) with required information for the device
+1. Configure [config.ini](config.placeholder.ini) with required information for the device
 1. If necessary, update the IotEdgeConfigPath file with the correct Edge Data Store container image for the destination device processor architecture (ARM32, ARM64, or AMD64)
-1. Configure specified EdsConfigPath file ([eds-config.json](eds-config.json) by default) with required Edge Data Store system configuration, see [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Configuration/EdgeSystemConfiguration.html)  
-   **Note: The default EDS configuration file is the minimum configuration from the [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Configuration/EdgeSystemConfiguration.html#configure-minimum-edge-data-store), and includes no Periodic Egress Endpoints or Adapters**
+1. Configure specified EdsConfigPath file ([eds-config.json](eds-config.json) by default) with required Edge Data Store system configuration, see [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Configuration/EdgeSystemConfiguration_1-0.html)  
+   **Note: The default EDS configuration file is the minimum configuration from the [OSIsoft Docs](https://osisoft.github.io/Edge-Data-Store-Docs/V1/Configuration/EdgeSystemConfiguration_1-0.html#configure-minimum-edge-data-store), and includes no Periodic Egress Endpoints or Adapters**
 
 ## Sample Deployment Process
 
@@ -136,7 +136,7 @@ A script is also included that can restore the Azure Iot Hub and destination edg
 
 ### Test Requirements
 
-Configure the [config.ini](config.ini) file including the Test section:
+Configure the [config.ini](config.placeholder.ini) file including the Test section:
 
 1. Create (or find) an Azure Virtual Machine using the Ubuntu 18.04 LTS image, and enter the IpAddress, OS (ubuntu/18.04), UserName, and Password created for the device
 1. Ensure the Azure IoT Hub Name is entered for HubName, and enter the Virtual Machine name for DeviceId (DeviceId can be any string, but should be used to identify the device)
@@ -156,7 +156,5 @@ Once the [config.ini](config.ini) file is fully configured (including the Test s
 
 ---
 
-For the Edge Data Store deployment landing page [ReadMe](../)  
-For the Edge deployment landing page [ReadMe](../../)  
-For the Edge landing page [ReadMe](../../../)  
+For the Edge landing page [ReadMe](https://github.com/osisoft/OSI-Samples-Edge)  
 For the OSIsoft Samples landing page [ReadMe](https://github.com/osisoft/OSI-Samples)
