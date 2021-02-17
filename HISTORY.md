@@ -1,5 +1,10 @@
 # Version History
 
+## 1.0.3 / 2021-02-17
+
+- Updated master branch to main
+- Updated pipeline to use internal pool
+
 ## 1.0.2 / 2020-12-21
 
 - Update to use azure-iot extension in place of deprecated azure-cli-iot-ext
