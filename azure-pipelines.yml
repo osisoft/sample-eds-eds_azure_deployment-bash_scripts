@@ -53,6 +53,9 @@ jobs:
           fileLibrary: $(CredFileLibrary)
           filePath: $(projPath)
 
+      - bash: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+        displayName: 'Install Azure CLI'
+
       - bash: |
           chmod +x test.sh
           chmod +x remote.sh
