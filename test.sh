@@ -31,6 +31,8 @@ echo "Test: Disable Strict Host Key Checking..."
 ssh -o "StrictHostKeyChecking=no" $UserName@$IpAddress
 echo "Test: Copy ssh key to device..."
 echo "$Password" | sshpass ssh-copy-id -f $UserName@$IpAddress
+echo "Test: Try login"
+ssh $UserName@$IpAddress uptime
 
 # Bash: Exit on error
 set -e
