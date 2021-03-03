@@ -26,10 +26,8 @@ mkdir -p ./backup/$IpAddress
 cp -r ./send/* ./backup/$IpAddress
 
 echo "Remote: Sending files to device..."
-ssh -t $UserName@$IpAddress "sudo rm -rf /usr/local/eds-install"
-echo "Remote: Sending files to device2..."
+ssh $UserName@$IpAddress "sudo rm -rf /usr/local/eds-install"
 ssh $UserName@$IpAddress "sudo mkdir -m777 -p /usr/local/eds-install"
-echo "Remote: Sending files to device3..."
 scp -r send/* $UserName@$IpAddress:/usr/local/eds-install
 
 echo "Remote: Running edge device setup script..."
