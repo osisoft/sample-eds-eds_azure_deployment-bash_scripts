@@ -54,7 +54,6 @@ jobs:
           chmod +x reset.sh
           chmod +x reset-device.sh
           ./test.sh
-        workingDirectory: $(Build.SourcesDirectory)
         displayName: 'Run tests'
 
   - job: Analysis
