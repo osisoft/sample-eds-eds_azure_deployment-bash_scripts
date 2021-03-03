@@ -25,10 +25,10 @@ apt install openssh-client
 echo "Test: Install sshpass..."
 apt install sshpass
 
-echo "Test: Remove old key..."
-ssh-keygen -R $IpAddress
 echo "Test: Generate key for passwordless login to device..."
 echo "" | ssh-keygen -t rsa -b 4096 -C productreadiness -P ""
+echo "Test: Disable Strict Host Key Checking..."
+ssh -o "StrictHostKeyChecking=no" $UserName@$IpAddress
 echo "Test: Copy ssh key to device..."
 echo "$Password" | sshpass ssh-copy-id -f $UserName@$IpAddress
 
