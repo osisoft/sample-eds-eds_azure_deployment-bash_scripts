@@ -12,7 +12,9 @@ az account set --subscription $AzSubscription
 
 echo "Test: Start the VM..."
 az vm start -g $AzResourceGroup -n $AzVmName
-sleep 30
+
+echo "Test: Wait for VM to install automated updates..."
+sleep 60
 
 echo "Test: Set up the iotedge-config.json file..."
 sed -i s/{azureContainerRegistryName}/$AcrName/g iotedge-config.json
