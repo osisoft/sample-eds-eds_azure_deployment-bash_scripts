@@ -57,6 +57,11 @@ jobs:
         workingDirectory: $(Build.SourcesDirectory)
         displayName: 'Run tests'
 
+  - job: Analysis
+    pool:
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
+    steps:
       - template: '/miscellaneous/build_templates/analysis.yml@templates'
         parameters:
           skipPolaris: true
