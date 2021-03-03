@@ -11,7 +11,7 @@ echo "Remote: Deploying modules to device..."
 az iot edge set-modules --device-id $DeviceId --hub-name $HubName --content $IotEdgeConfigPath
 
 echo "Remote: Retrieving connection string..."
-ConnectionString=$(az iot hub device-identity show-connection-string --device-id $DeviceId --hub-name $HubName | sed -n 's/.*\(HostName=.*\)".*/\1/p')
+ConnectionString=$(az iot hub device-identity connection-string show --device-id $DeviceId --hub-name $HubName | sed -n 's/.*\(HostName=.*\)".*/\1/p')
 ConnectionString=${ConnectionString//;/\\;}
 
 echo "Remote: Preparing send folder..."
