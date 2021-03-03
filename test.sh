@@ -21,7 +21,7 @@ sed -i s~{azureContainerRegistryPassword}~$AcrPassword~g iotedge-config.json
 sed -i s~{azureContainerRegistryImageUri}~$AcrImageUri~g iotedge-config.json
 
 echo "Test: Install sshpass..."
-sudo apt install sshpass
+apt install sshpass
 
 echo "Test: Generate key for passwordless login to device..."
 echo "" | ssh-keygen -t rsa -b 4096 -C productreadiness -P ""

@@ -3,17 +3,11 @@ trigger:
   branches:
     include:
       - main
-  paths:
-    include:
-      - '/'
 
 pr:
   branches:
     include:
       - main
-  paths:
-    include:
-      - '/'
 
 schedules:
   - cron: '0 0 * * 0'
@@ -32,8 +26,6 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: projPath
-    value: '/'
   - name: CredFile
     value: config.ini
   - name: CredFileLibrary
@@ -51,9 +43,8 @@ jobs:
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)
 
-      - bash: curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      - bash: curl -sL https://aka.ms/InstallAzureCLIDeb | bash
         displayName: 'Install Azure CLI'
 
       - bash: |
@@ -63,9 +54,9 @@ jobs:
           chmod +x reset.sh
           chmod +x reset-device.sh
           ./test.sh
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+        workingDirectory: $(Build.SourcesDirectory)
         displayName: 'Run tests'
 
-  - template: '/miscellaneous/build_templates/analysis.yml@templates'
-    parameters:
-      language: powershell
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          skipPolaris: true
