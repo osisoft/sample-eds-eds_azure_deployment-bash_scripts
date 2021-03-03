@@ -20,6 +20,9 @@ sed -i s/{azureContainerRegistryUsername}/$AcrUsername/g iotedge-config.json
 sed -i s~{azureContainerRegistryPassword}~$AcrPassword~g iotedge-config.json
 sed -i s~{azureContainerRegistryImageUri}~$AcrImageUri~g iotedge-config.json
 
+echo "Test: Install ssh-client..."
+apt install openssh-client
+
 echo "Test: Install sshpass..."
 apt install sshpass
 
