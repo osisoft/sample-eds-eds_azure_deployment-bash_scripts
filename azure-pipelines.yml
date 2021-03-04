@@ -2,38 +2,30 @@ trigger:
   batch: true
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 pr:
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 schedules:
   - cron: '0 0 * * 0'
     displayName: Weekly build
     branches:
       include:
-        - master
+        - main
     always: true
 
 resources:
   repositories:
-  - repository: templates
-    type: github
-    name: osisoft/OSI-Samples
-    endpoint: osisoft/OSI-Samples
+    - repository: templates
+      type: github
+      name: osisoft/OSI-Samples
+      endpoint: osisoft/OSI-Samples
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: projPath
-    value: '/'
   - name: CredFile
     value: config.ini
   - name: CredFileLibrary
@@ -44,13 +36,16 @@ variables:
 jobs:
   - job: Tests
     pool:
-      vmImage: 'ubuntu-latest'
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Linux
     steps:
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)
+
+      - bash: curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+        displayName: 'Install Azure CLI'
 
       - bash: |
           chmod +x test.sh
@@ -59,9 +54,13 @@ jobs:
           chmod +x reset.sh
           chmod +x reset-device.sh
           ./test.sh
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)/
         displayName: 'Run tests'
 
-  - template: '/miscellaneous/build_templates/analysis.yml@templates'
-    parameters:
-      language: powershell
+  - job: Analysis
+    pool:
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
+    steps:
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          skipPolaris: true

@@ -13,6 +13,9 @@ az account set --subscription $AzSubscription
 echo "Test: Start the VM..."
 az vm start -g $AzResourceGroup -n $AzVmName
 
+echo "Test: Wait for VM to install automated updates..."
+sleep 60
+
 echo "Test: Set up the iotedge-config.json file..."
 sed -i s/{azureContainerRegistryName}/$AcrName/g iotedge-config.json
 sed -i s/{azureContainerRegistryAddress}/$AcrAddress/g iotedge-config.json
@@ -20,8 +23,10 @@ sed -i s/{azureContainerRegistryUsername}/$AcrUsername/g iotedge-config.json
 sed -i s~{azureContainerRegistryPassword}~$AcrPassword~g iotedge-config.json
 sed -i s~{azureContainerRegistryImageUri}~$AcrImageUri~g iotedge-config.json
 
+echo "Test: Install ssh-client..."
+apt install openssh-client
 echo "Test: Install sshpass..."
-sudo apt install sshpass
+apt install sshpass
 
 echo "Test: Generate key for passwordless login to device..."
 echo "" | ssh-keygen -t rsa -b 4096 -C productreadiness -P ""
