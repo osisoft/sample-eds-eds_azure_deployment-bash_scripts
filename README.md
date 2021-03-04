@@ -2,7 +2,7 @@
 
 **Version:** 1.0.3
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/Edge/osisoft.sample-eds-eds_azure_deployment-bash_scripts?repoName=osisoft%2Fsample-eds-eds_azure_deployment-bash_scripts&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2643&repoName=osisoft%2Fsample-eds-eds_azure_deployment-bash_scripts&branchName=main)
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/Edge/osisoft.sample-eds-eds_azure_deployment-shell?repoName=osisoft%2Fsample-eds-eds_azure_deployment-shell&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=3086&repoName=osisoft%2Fsample-eds-eds_azure_deployment-shell&branchName=main)
 
 This sample uses bash scripts to deploy Edge Data Store to a remote Linux edge device using Azure IoT Hub and Azure IoT Edge Modules.
 
