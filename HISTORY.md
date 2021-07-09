@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.4 / 2021-07-09
+
+- cleand up the gitignore
+
 ## 1.0.3 / 2021-03-03
 
 - Updated pipeline to use internal agent pool
