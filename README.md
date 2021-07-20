@@ -1,6 +1,6 @@
 # OSIsoft Edge Data Store Azure IoT Deployment Sample
 
-**Version:** 1.0.3
+**Version:** 1.0.4
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/Edge/osisoft.sample-eds-eds_azure_deployment-shell?repoName=osisoft%2Fsample-eds-eds_azure_deployment-shell&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=3086&repoName=osisoft%2Fsample-eds-eds_azure_deployment-shell&branchName=main)
 
